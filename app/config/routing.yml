@@ -1,4 +1,13 @@
-app:
-    resource: "@AppBundle/Controller/"
+calculator:
+    resource: "@AppBundle/Controller/CalculatorController.php"
     type:     annotation
     prefix: /calculator
+
+racional:
+    resource: "@AppBundle/Controller/RacionalController.php"
+    type:     annotation
+    prefix: /racional
+
+default:
+    resource: "@AppBundle/Controller/DefaultController.php"
+    type:     annotation

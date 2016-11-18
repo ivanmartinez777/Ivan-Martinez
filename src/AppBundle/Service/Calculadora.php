@@ -67,6 +67,8 @@ class Calculadora
         return $this->getResultado();
     }
 
+
+
     public function resta(){
 
         $this->setResultado($this->getOp1()- $this->getOp2());

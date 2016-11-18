@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }}Index{% endblock %}
+
+{% block body %}
+    <ul>
+        <li><a href="{{ path('app_racional_index') }}">Inicio</a></li>
+        <li><a href="{{ path('app_racional_sum') }}">Suma</a></li>
+        <li><a href="{{ path('app_racional_resta') }}">Resta</a></li>
+        <li><a href="{{ path('app_racional_multiplicacion') }}">Multiplicacion</a></li>
+        <li><a href="{{ path('app_racional_division') }}">Division</a></li>
+
+    </ul>
+{% endblock %}
