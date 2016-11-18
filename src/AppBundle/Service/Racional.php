@@ -58,7 +58,7 @@ class Racional
     public function suma(Racional $racional)
    {
 
-       $numerador = $this->getNum() + $racional->getNum();
+       $numerador = $this->getNum() + ($racional->getNum() * $this->getDen());
        $denominador = $this->getDen()* $racional->getDen();
        $resultado = new Racional($numerador, $denominador);
         return $resultado;
@@ -66,7 +66,7 @@ class Racional
     public function resta(Racional $racional)
     {
 
-        $numerador = $this->getNum() - $racional->getNum();
+        $numerador = $this->getNum() - ($racional->getNum() * $this->getDen());
         $denominador = $this->getDen()* $racional->getDen();
         $resultado = new Racional($numerador, $denominador);
         return $resultado;
