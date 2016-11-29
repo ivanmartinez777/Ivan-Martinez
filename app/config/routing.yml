@@ -8,6 +8,13 @@ racional:
     type:     annotation
     prefix: /racional
 
+
+
 default:
     resource: "@AppBundle/Controller/DefaultController.php"
     type:     annotation
+
+app.product:
+    resource: "@AppBundle/Controller/ProductoController.php"
+    type:     annotation
+    prefix: /productos
