@@ -10,6 +10,7 @@
             {{ producto.price }}€<br>
             {{ producto.createdAt | date}}<br>
             {{ producto.updatedAt | date("d/m/Y H:i:s")}}<br>
+            <a href="{{ path('app_producto_remove', {'id': producto.id}) }}">remove</a> <br>
         {% endfor %}
         <a href="{{ path('app_producto_create') }}">Introducir nuevo producto</a>
 {% endblock %}

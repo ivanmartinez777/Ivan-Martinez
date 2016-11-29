@@ -67,4 +67,21 @@ class ProductoController extends Controller
 
     }
 
+    /**
+     * @Route( path="/remove/{id}", name="app_producto_remove")
+     *@return \Symfony\Component\HttpFoundation\Response
+     */
+    public function removeAction(Request $request)
+    {
+        $m = $this->getDoctrine()->getManager();
+        $repository = $m->getRepository('AppBundle:Product');
+        $id = $request->request->get('id');
+
+        $product = $repository->find($id);
+        $m->remove($product);
+        $m->flush();
+
+        return $this->redirectToRoute('app_producto_index');
+    }
+
 }
