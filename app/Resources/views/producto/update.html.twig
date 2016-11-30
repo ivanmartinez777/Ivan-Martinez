@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }}Producto{% endblock %}
+
+{% block body %}
+    <form action="{{ path('app_producto_doUpdate') }}" method="post">
+        <input type="hidden" name="id" value="{{ productos.id }}">
+        {{ productos.id }}<br>
+        Name<input type="text" name='name' placeholder="name"><br>
+        Description<input type="text" name='description' placeholder="description"><br>
+        Price<input type="text" name='price' placeholder="price"><br>
+        <input type="submit" value="Ok">
+    </form>
+{% endblock %}

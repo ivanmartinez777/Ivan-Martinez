@@ -68,14 +68,60 @@ class ProductoController extends Controller
     }
 
     /**
-     * @Route( path="/remove/{id}", name="app_producto_remove")
+     * @Route("/update/{id}", name="app_producto_update")
      *@return \Symfony\Component\HttpFoundation\Response
      */
-    public function removeAction(Request $request)
+    public function updateAction($id)
     {
         $m = $this->getDoctrine()->getManager();
         $repository = $m->getRepository('AppBundle:Product');
-        $id = $request->request->get('id');
+       $product = $repository->find($id);
+        return $this->render( ':producto:update.html.twig',
+            [
+                'productos'  => $product,
+            ]
+        );
+    }
+
+    /**
+     * @Route("/doUpdate", name="app_producto_doUpdate")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function doUpdateAction(Request $request)
+    {
+        $m = $this->getDoctrine()->getManager();
+        $repository = $m->getRepository('AppBundle:Product');
+
+        $id         = $request->request->get('id');
+        $name = $request->request->get('name');
+        $description = $request->request->get('description');
+        $price = $request->request->get('price');
+
+        $prod = $repository->find($id);
+
+        $prod
+            ->setName($name)
+            ->setDescription($description)
+            ->setPrice($price)
+        ;
+
+        $m->flush();
+
+
+        return $this->redirectToRoute('app_producto_index');
+
+    }
+
+
+    /**
+     * @Route("/remove/{id}", name="app_producto_remove")
+     *@return \Symfony\Component\HttpFoundation\Response
+     */
+    public function removeAction( $id)
+    {
+        $m = $this->getDoctrine()->getManager();
+        $repository = $m->getRepository('AppBundle:Product');
+
 
         $product = $repository->find($id);
         $m->remove($product);
