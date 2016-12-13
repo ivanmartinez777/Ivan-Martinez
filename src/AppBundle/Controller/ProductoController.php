@@ -103,6 +103,7 @@ class ProductoController extends Controller
             ->setName($name)
             ->setDescription($description)
             ->setPrice($price)
+            ->setUpdatedAt()
         ;
 
         $m->flush();

@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
@@ -24,20 +24,38 @@ class Product
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min = 2,
+     *      max = 50,
+     *      minMessage = "El nombre del producto debe tener {{ limit }} caracteres o más",
+     *      maxMessage = "El nombre del producto puede tener {{ limit }} caracteres como máximo"
+     * )
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min = 2,
+     *      max = 50,
+     *      minMessage = "El nombre del producto debe tener {{ limit }} caracteres o más",
+     *      maxMessage = "El nombre del producto puede tener {{ limit }} caracteres como máximo"
+     * )
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
 
     /**
      * @var string
+     *
+     * @Assert\NotNull()
+     *
+     * @Assert\Length(min = 2,
+     *      max = 250,
+     *      minMessage = "El nombre del producto debe tener {{ limit }} caracteres o más",
+     *      maxMessage = "El nombre del producto puede tener {{ limit }} caracteres como máximo"
+     * )
      *
      * @ORM\Column(name="price", type="decimal", precision=6, scale=2)
      */
@@ -181,10 +199,10 @@ class Product
      *
      * @return Product
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt()
     {
-        $this->updatedAt = $updatedAt;
 
+        $this->updatedAt = new \DateTime();
         return $this;
     }
 

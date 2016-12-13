@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }}Usuario{% endblock %}
+
+{% block body %}
+    <form action="{{ path('app_usuario_doUpdate') }}" method="post">
+        <input type="hidden" name="id" value="{{ usuarios.id }}">
+        {{ usuarios.id }}<br>
+        Username<input type="text" name='username' placeholder="username"><br>
+        Password<input type="text" name='password' placeholder="password"><br>
+        Email<input type="text" name='email' placeholder="email"><br>
+        <input type="submit" value="Ok">
+    </form>
+{% endblock %}

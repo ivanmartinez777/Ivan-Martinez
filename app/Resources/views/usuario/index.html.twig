@@ -1,10 +1,17 @@
 {% extends '::base.html.twig' %}
-{% block title %}{{ parent() }}Index{% endblock %}
 
-{% block body %}
-    <ul>
-        <li><a href="{{ path('app_usuario_index') }}">Inicio</a></li>
+    {% block tittle %}Usuarios{% endblock %}
 
-
-    </ul>
-{% endblock %}
+    {% block body %}
+        {% for usuario in usuarios %}
+            {{ usuario.id }}<br>
+            {{ usuario.username }}<br>
+            {{ usuario.password }}<br>
+            {{ usuario.email }}€<br>
+            {{ usuario.createdAt | date}}<br>
+            {{ usuario.updatedAt | date("d/m/Y H:i:s")}}<br>
+            <a href="{{ path('app_usuario_remove', {'id': usuario.id}) }}">remove</a> <br>
+            <a href="{{ path('usuario_update', {'id': usuario.id}) }}">update</a> <br>
+        {% endfor %}
+    <a href="{{ path('app_usuario_create') }}">Introducir nuevo usuario</a>
+{% endblock %}%}
